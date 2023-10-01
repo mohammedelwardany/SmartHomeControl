@@ -1,0 +1,478 @@
+
+Control_SmartHome.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000002ea  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         0000000e  00800060  000002ea  0000037e  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          0000007d  0080006e  0080006e  0000038c  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  0000038c  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000003bc  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000128  00000000  00000000  000003f8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000fa3  00000000  00000000  00000520  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000008d7  00000000  00000000  000014c3  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000668  00000000  00000000  00001d9a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  0000037c  00000000  00000000  00002404  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000962  00000000  00000000  00002780  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000675  00000000  00000000  000030e2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 000000e8  00000000  00000000  00003757  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 a5 00 	jmp	0x14a	; 0x14a <__vector_12>
+  34:	0c 94 cf 00 	jmp	0x19e	; 0x19e <__vector_13>
+  38:	0c 94 03 01 	jmp	0x206	; 0x206 <__vector_14>
+  3c:	0c 94 2a 01 	jmp	0x254	; 0x254 <__vector_15>
+  40:	0c 94 49 00 	jmp	0x92	; 0x92 <__vector_16>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	ea ee       	ldi	r30, 0xEA	; 234
+  68:	f2 e0       	ldi	r31, 0x02	; 2
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	ae 36       	cpi	r26, 0x6E	; 110
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	20 e0       	ldi	r18, 0x00	; 0
+  78:	ae e6       	ldi	r26, 0x6E	; 110
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	ab 3e       	cpi	r26, 0xEB	; 235
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 72 01 	call	0x2e4	; 0x2e4 <main>
+  8a:	0c 94 73 01 	jmp	0x2e6	; 0x2e6 <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <__vector_16>:
+
+}
+
+/*Setting the global pointer to function to the ISR*/
+void __vector_16(void)
+{
+  92:	1f 92       	push	r1
+  94:	0f 92       	push	r0
+  96:	0f b6       	in	r0, 0x3f	; 63
+  98:	0f 92       	push	r0
+  9a:	11 24       	eor	r1, r1
+  9c:	2f 93       	push	r18
+  9e:	3f 93       	push	r19
+  a0:	4f 93       	push	r20
+  a2:	5f 93       	push	r21
+  a4:	6f 93       	push	r22
+  a6:	7f 93       	push	r23
+  a8:	8f 93       	push	r24
+  aa:	9f 93       	push	r25
+  ac:	af 93       	push	r26
+  ae:	bf 93       	push	r27
+  b0:	ef 93       	push	r30
+  b2:	ff 93       	push	r31
+	/* Store the ADC value in the buffer */
+#if ADC_ADJUST == Right_Adjust
+	Global_u16pBuffer[Global_u8Counter] = ADC ;
+  b4:	84 b1       	in	r24, 0x04	; 4
+  b6:	95 b1       	in	r25, 0x05	; 5
+  b8:	e0 91 6e 00 	lds	r30, 0x006E	; 0x80006e <__data_end>
+  bc:	f0 e0       	ldi	r31, 0x00	; 0
+  be:	ee 0f       	add	r30, r30
+  c0:	ff 1f       	adc	r31, r31
+  c2:	20 91 e1 00 	lds	r18, 0x00E1	; 0x8000e1 <Global_u16pBuffer>
+  c6:	30 91 e2 00 	lds	r19, 0x00E2	; 0x8000e2 <Global_u16pBuffer+0x1>
+  ca:	e2 0f       	add	r30, r18
+  cc:	f3 1f       	adc	r31, r19
+  ce:	91 83       	std	Z+1, r25	; 0x01
+  d0:	80 83       	st	Z, r24
+#elif ADC_ADJUST == Left_Adjust
+	Global_u16pBuffer[Global_u8Counter] = ADCH ;
+#endif
+
+	/* Call the user-defined callback function */
+	if(pfuncADC_ISR[Global_u8Counter] != NULL)
+  d2:	e0 91 6e 00 	lds	r30, 0x006E	; 0x80006e <__data_end>
+  d6:	f0 e0       	ldi	r31, 0x00	; 0
+  d8:	ee 0f       	add	r30, r30
+  da:	ff 1f       	adc	r31, r31
+  dc:	e7 52       	subi	r30, 0x27	; 39
+  de:	ff 4f       	sbci	r31, 0xFF	; 255
+  e0:	01 90       	ld	r0, Z+
+  e2:	f0 81       	ld	r31, Z
+  e4:	e0 2d       	mov	r30, r0
+  e6:	30 97       	sbiw	r30, 0x00	; 0
+  e8:	09 f0       	breq	.+2      	; 0xec <__vector_16+0x5a>
+	{
+		pfuncADC_ISR[Global_u8Counter]();
+  ea:	09 95       	icall
+	}
+
+	/*Increase the counter*/
+	Global_u8Counter++;
+  ec:	80 91 6e 00 	lds	r24, 0x006E	; 0x80006e <__data_end>
+  f0:	8f 5f       	subi	r24, 0xFF	; 255
+
+	if(Global_u8Counter == MAX_NUMBER_OF_CHANNELS)
+  f2:	84 30       	cpi	r24, 0x04	; 4
+  f4:	19 f0       	breq	.+6      	; 0xfc <__vector_16+0x6a>
+	{
+		pfuncADC_ISR[Global_u8Counter]();
+	}
+
+	/*Increase the counter*/
+	Global_u8Counter++;
+  f6:	80 93 6e 00 	sts	0x006E, r24	; 0x80006e <__data_end>
+  fa:	02 c0       	rjmp	.+4      	; 0x100 <__vector_16+0x6e>
+
+	if(Global_u8Counter == MAX_NUMBER_OF_CHANNELS)
+	{
+		Global_u8Counter = 0;
+  fc:	10 92 6e 00 	sts	0x006E, r1	; 0x80006e <__data_end>
+	}
+
+	/* Start the Next Channel Reading */
+	/* Channel Select */
+	ADMUX = (ADMUX & ADMUX_CHANNEL_SELECTION_MUSK) | (ptr[Global_pScanGroup][Global_u8Counter]);
+ 100:	87 b1       	in	r24, 0x07	; 7
+ 102:	e0 91 d8 00 	lds	r30, 0x00D8	; 0x8000d8 <Global_pScanGroup>
+ 106:	f0 e0       	ldi	r31, 0x00	; 0
+ 108:	ee 0f       	add	r30, r30
+ 10a:	ff 1f       	adc	r31, r31
+ 10c:	e0 5a       	subi	r30, 0xA0	; 160
+ 10e:	ff 4f       	sbci	r31, 0xFF	; 255
+ 110:	90 91 6e 00 	lds	r25, 0x006E	; 0x80006e <__data_end>
+ 114:	01 90       	ld	r0, Z+
+ 116:	f0 81       	ld	r31, Z
+ 118:	e0 2d       	mov	r30, r0
+ 11a:	e9 0f       	add	r30, r25
+ 11c:	f1 1d       	adc	r31, r1
+ 11e:	80 7e       	andi	r24, 0xE0	; 224
+ 120:	90 81       	ld	r25, Z
+ 122:	89 2b       	or	r24, r25
+ 124:	87 b9       	out	0x07, r24	; 7
+	SET_BIT(ADCSRA,ADCSRA_BIT_6_ADSC);
+ 126:	36 9a       	sbi	0x06, 6	; 6
+
+}
+ 128:	ff 91       	pop	r31
+ 12a:	ef 91       	pop	r30
+ 12c:	bf 91       	pop	r27
+ 12e:	af 91       	pop	r26
+ 130:	9f 91       	pop	r25
+ 132:	8f 91       	pop	r24
+ 134:	7f 91       	pop	r23
+ 136:	6f 91       	pop	r22
+ 138:	5f 91       	pop	r21
+ 13a:	4f 91       	pop	r20
+ 13c:	3f 91       	pop	r19
+ 13e:	2f 91       	pop	r18
+ 140:	0f 90       	pop	r0
+ 142:	0f be       	out	0x3f, r0	; 63
+ 144:	0f 90       	pop	r0
+ 146:	1f 90       	pop	r1
+ 148:	18 95       	reti
+
+0000014a <__vector_12>:
+		pfuncSPI_STCcomplete_ISR = ptr;
+	}
+}
+
+void __vector_12(void)
+{
+ 14a:	1f 92       	push	r1
+ 14c:	0f 92       	push	r0
+ 14e:	0f b6       	in	r0, 0x3f	; 63
+ 150:	0f 92       	push	r0
+ 152:	11 24       	eor	r1, r1
+ 154:	2f 93       	push	r18
+ 156:	3f 93       	push	r19
+ 158:	4f 93       	push	r20
+ 15a:	5f 93       	push	r21
+ 15c:	6f 93       	push	r22
+ 15e:	7f 93       	push	r23
+ 160:	8f 93       	push	r24
+ 162:	9f 93       	push	r25
+ 164:	af 93       	push	r26
+ 166:	bf 93       	push	r27
+ 168:	ef 93       	push	r30
+ 16a:	ff 93       	push	r31
+	pfuncSPI_STCcomplete_ISR();
+ 16c:	e0 91 e3 00 	lds	r30, 0x00E3	; 0x8000e3 <pfuncSPI_STCcomplete_ISR>
+ 170:	f0 91 e4 00 	lds	r31, 0x00E4	; 0x8000e4 <pfuncSPI_STCcomplete_ISR+0x1>
+ 174:	09 95       	icall
+}
+ 176:	ff 91       	pop	r31
+ 178:	ef 91       	pop	r30
+ 17a:	bf 91       	pop	r27
+ 17c:	af 91       	pop	r26
+ 17e:	9f 91       	pop	r25
+ 180:	8f 91       	pop	r24
+ 182:	7f 91       	pop	r23
+ 184:	6f 91       	pop	r22
+ 186:	5f 91       	pop	r21
+ 188:	4f 91       	pop	r20
+ 18a:	3f 91       	pop	r19
+ 18c:	2f 91       	pop	r18
+ 18e:	0f 90       	pop	r0
+ 190:	0f be       	out	0x3f, r0	; 63
+ 192:	0f 90       	pop	r0
+ 194:	1f 90       	pop	r1
+ 196:	18 95       	reti
+
+00000198 <UART_voidAynchSendChar>:
+}
+
+//Transmission Complete
+void UART_voidCallBackTxComplete(void(*ptr)(void))
+{
+	pfuncUART_TxComplete_ISR = ptr;
+ 198:	57 9a       	sbi	0x0a, 7	; 10
+ 19a:	8c b9       	out	0x0c, r24	; 12
+ 19c:	08 95       	ret
+
+0000019e <__vector_13>:
+}
+
+//********************************************ISR************************************************//
+
+void __vector_13(void)
+{
+ 19e:	1f 92       	push	r1
+ 1a0:	0f 92       	push	r0
+ 1a2:	0f b6       	in	r0, 0x3f	; 63
+ 1a4:	0f 92       	push	r0
+ 1a6:	11 24       	eor	r1, r1
+ 1a8:	2f 93       	push	r18
+ 1aa:	3f 93       	push	r19
+ 1ac:	4f 93       	push	r20
+ 1ae:	5f 93       	push	r21
+ 1b0:	6f 93       	push	r22
+ 1b2:	7f 93       	push	r23
+ 1b4:	8f 93       	push	r24
+ 1b6:	9f 93       	push	r25
+ 1b8:	af 93       	push	r26
+ 1ba:	bf 93       	push	r27
+ 1bc:	ef 93       	push	r30
+ 1be:	ff 93       	push	r31
+	static uint8 i;
+	Global_u8UARTRecieveChar = UDR;
+ 1c0:	9c b1       	in	r25, 0x0c	; 12
+ 1c2:	90 93 73 00 	sts	0x0073, r25	; 0x800073 <Global_u8UARTRecieveChar>
+	Global_u8UARTRecieveArray[i] = Global_u8UARTRecieveChar;
+ 1c6:	80 91 6f 00 	lds	r24, 0x006F	; 0x80006f <i.1897>
+ 1ca:	e8 2f       	mov	r30, r24
+ 1cc:	f0 e0       	ldi	r31, 0x00	; 0
+ 1ce:	ec 58       	subi	r30, 0x8C	; 140
+ 1d0:	ff 4f       	sbci	r31, 0xFF	; 255
+ 1d2:	90 83       	st	Z, r25
+	i++;
+ 1d4:	8f 5f       	subi	r24, 0xFF	; 255
+ 1d6:	80 93 6f 00 	sts	0x006F, r24	; 0x80006f <i.1897>
+	pfuncUART_RxComplete_ISR();
+ 1da:	e0 91 e9 00 	lds	r30, 0x00E9	; 0x8000e9 <pfuncUART_RxComplete_ISR>
+ 1de:	f0 91 ea 00 	lds	r31, 0x00EA	; 0x8000ea <pfuncUART_RxComplete_ISR+0x1>
+ 1e2:	09 95       	icall
+}
+ 1e4:	ff 91       	pop	r31
+ 1e6:	ef 91       	pop	r30
+ 1e8:	bf 91       	pop	r27
+ 1ea:	af 91       	pop	r26
+ 1ec:	9f 91       	pop	r25
+ 1ee:	8f 91       	pop	r24
+ 1f0:	7f 91       	pop	r23
+ 1f2:	6f 91       	pop	r22
+ 1f4:	5f 91       	pop	r21
+ 1f6:	4f 91       	pop	r20
+ 1f8:	3f 91       	pop	r19
+ 1fa:	2f 91       	pop	r18
+ 1fc:	0f 90       	pop	r0
+ 1fe:	0f be       	out	0x3f, r0	; 63
+ 200:	0f 90       	pop	r0
+ 202:	1f 90       	pop	r1
+ 204:	18 95       	reti
+
+00000206 <__vector_14>:
+
+void __vector_14(void)
+{
+ 206:	1f 92       	push	r1
+ 208:	0f 92       	push	r0
+ 20a:	0f b6       	in	r0, 0x3f	; 63
+ 20c:	0f 92       	push	r0
+ 20e:	11 24       	eor	r1, r1
+ 210:	2f 93       	push	r18
+ 212:	3f 93       	push	r19
+ 214:	4f 93       	push	r20
+ 216:	5f 93       	push	r21
+ 218:	6f 93       	push	r22
+ 21a:	7f 93       	push	r23
+ 21c:	8f 93       	push	r24
+ 21e:	9f 93       	push	r25
+ 220:	af 93       	push	r26
+ 222:	bf 93       	push	r27
+ 224:	ef 93       	push	r30
+ 226:	ff 93       	push	r31
+	pfuncUART_DataEmpty_ISR();
+ 228:	e0 91 e5 00 	lds	r30, 0x00E5	; 0x8000e5 <pfuncUART_DataEmpty_ISR>
+ 22c:	f0 91 e6 00 	lds	r31, 0x00E6	; 0x8000e6 <pfuncUART_DataEmpty_ISR+0x1>
+ 230:	09 95       	icall
+}
+ 232:	ff 91       	pop	r31
+ 234:	ef 91       	pop	r30
+ 236:	bf 91       	pop	r27
+ 238:	af 91       	pop	r26
+ 23a:	9f 91       	pop	r25
+ 23c:	8f 91       	pop	r24
+ 23e:	7f 91       	pop	r23
+ 240:	6f 91       	pop	r22
+ 242:	5f 91       	pop	r21
+ 244:	4f 91       	pop	r20
+ 246:	3f 91       	pop	r19
+ 248:	2f 91       	pop	r18
+ 24a:	0f 90       	pop	r0
+ 24c:	0f be       	out	0x3f, r0	; 63
+ 24e:	0f 90       	pop	r0
+ 250:	1f 90       	pop	r1
+ 252:	18 95       	reti
+
+00000254 <__vector_15>:
+
+void __vector_15(void)
+{
+ 254:	1f 92       	push	r1
+ 256:	0f 92       	push	r0
+ 258:	0f b6       	in	r0, 0x3f	; 63
+ 25a:	0f 92       	push	r0
+ 25c:	11 24       	eor	r1, r1
+ 25e:	2f 93       	push	r18
+ 260:	3f 93       	push	r19
+ 262:	4f 93       	push	r20
+ 264:	5f 93       	push	r21
+ 266:	6f 93       	push	r22
+ 268:	7f 93       	push	r23
+ 26a:	8f 93       	push	r24
+ 26c:	9f 93       	push	r25
+ 26e:	af 93       	push	r26
+ 270:	bf 93       	push	r27
+ 272:	cf 93       	push	r28
+ 274:	ef 93       	push	r30
+ 276:	ff 93       	push	r31
+	static uint8 i = 1;
+	if(SendStringFlag == 1)
+ 278:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <SendStringFlag>
+ 27c:	81 30       	cpi	r24, 0x01	; 1
+ 27e:	d9 f4       	brne	.+54     	; 0x2b6 <__vector_15+0x62>
+	{
+		UART_voidAynchSendChar(Global_String[i]);
+ 280:	c0 91 6c 00 	lds	r28, 0x006C	; 0x80006c <i.1904>
+ 284:	e0 91 70 00 	lds	r30, 0x0070	; 0x800070 <Global_String>
+ 288:	f0 91 71 00 	lds	r31, 0x0071	; 0x800071 <Global_String+0x1>
+ 28c:	ec 0f       	add	r30, r28
+ 28e:	f1 1d       	adc	r31, r1
+ 290:	80 81       	ld	r24, Z
+ 292:	0e 94 cc 00 	call	0x198	; 0x198 <UART_voidAynchSendChar>
+		i++;
+ 296:	cf 5f       	subi	r28, 0xFF	; 255
+ 298:	c0 93 6c 00 	sts	0x006C, r28	; 0x80006c <i.1904>
+		if(Global_String[i] == '\0')
+ 29c:	e0 91 70 00 	lds	r30, 0x0070	; 0x800070 <Global_String>
+ 2a0:	f0 91 71 00 	lds	r31, 0x0071	; 0x800071 <Global_String+0x1>
+ 2a4:	ec 0f       	add	r30, r28
+ 2a6:	f1 1d       	adc	r31, r1
+ 2a8:	80 81       	ld	r24, Z
+ 2aa:	81 11       	cpse	r24, r1
+ 2ac:	04 c0       	rjmp	.+8      	; 0x2b6 <__vector_15+0x62>
+		{
+			UART_voidAynchSendChar(Global_String[i]);
+ 2ae:	0e 94 cc 00 	call	0x198	; 0x198 <UART_voidAynchSendChar>
+			SendStringFlag = 0;
+ 2b2:	10 92 72 00 	sts	0x0072, r1	; 0x800072 <SendStringFlag>
+		}
+	}
+	pfuncUART_TxComplete_ISR();
+ 2b6:	e0 91 e7 00 	lds	r30, 0x00E7	; 0x8000e7 <pfuncUART_TxComplete_ISR>
+ 2ba:	f0 91 e8 00 	lds	r31, 0x00E8	; 0x8000e8 <pfuncUART_TxComplete_ISR+0x1>
+ 2be:	09 95       	icall
+}
+ 2c0:	ff 91       	pop	r31
+ 2c2:	ef 91       	pop	r30
+ 2c4:	cf 91       	pop	r28
+ 2c6:	bf 91       	pop	r27
+ 2c8:	af 91       	pop	r26
+ 2ca:	9f 91       	pop	r25
+ 2cc:	8f 91       	pop	r24
+ 2ce:	7f 91       	pop	r23
+ 2d0:	6f 91       	pop	r22
+ 2d2:	5f 91       	pop	r21
+ 2d4:	4f 91       	pop	r20
+ 2d6:	3f 91       	pop	r19
+ 2d8:	2f 91       	pop	r18
+ 2da:	0f 90       	pop	r0
+ 2dc:	0f be       	out	0x3f, r0	; 63
+ 2de:	0f 90       	pop	r0
+ 2e0:	1f 90       	pop	r1
+ 2e2:	18 95       	reti
+
+000002e4 <main>:
+#define F_CPU	16000000
+#include <avr/io.h>
+
+
+int main(void)
+{
+ 2e4:	ff cf       	rjmp	.-2      	; 0x2e4 <main>
+
+000002e6 <_exit>:
+ 2e6:	f8 94       	cli
+
+000002e8 <__stop_program>:
+ 2e8:	ff cf       	rjmp	.-2      	; 0x2e8 <__stop_program>
